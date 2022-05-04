@@ -77,54 +77,38 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         showPolyLine();
         showPolygon();
-        showHollowPolygon();
         showCircle();
     }
 
     private void showCircle() {
         CircleOptions circleOptions = new CircleOptions()
-                .center(new LatLng(27.4, -67.1))
-                .radius(1000); // In meters
+                .center(new LatLng(-40.900558, 174.885971))
+                .radius(1000000)
+                .strokeColor(Color.RED)
+                .fillColor(Color.BLUE); // In meters
 
         Circle circle = mMap.addCircle(circleOptions);
-
-    }
-
-    private void showHollowPolygon() {
-        List<LatLng> hole = Arrays.asList(new LatLng(1, 1),
-                new LatLng(1, 2),
-                new LatLng(2, 2),
-                new LatLng(2, 1),
-                new LatLng(1, 1));
-        Polygon hollowPolygon = mMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(0, 0),
-                        new LatLng(0, 5),
-                        new LatLng(3, 5),
-                        new LatLng(3, 0),
-                        new LatLng(0, 0))
-                .addHole(hole)
-                .fillColor(Color.BLUE));
-
     }
 
     private void showPolygon() {
         PolygonOptions polygonOptions = new PolygonOptions()
-                .add(new LatLng(37.35, -66.0),
-                        new LatLng(37.45, -66.0),
-                        new LatLng(37.45, -66.2),
-                        new LatLng(37.35, -66.2),
-                        new LatLng(37.35, -66.0));
+                .strokeColor(Color.YELLOW)
+                .add(new LatLng(-18.766947, 46.869106),
+                        new LatLng(-18.166947, 56.869106),
+                        new LatLng(-18.566947, 66.869106),
+                        new LatLng(-20.766947, 76.869106),
+                        new LatLng(-25.766947, 86.869106));
 
         Polygon polygon = mMap.addPolygon(polygonOptions);
+        //polygon.setStrokeColor(R.color.teal_700);
     }
 
     private void showPolyLine() {
         PolylineOptions polylineOptions = new PolylineOptions()
-                .add(new LatLng(37.35, -122.0))
-                .add(new LatLng(37.45, -122.0))
-                .add(new LatLng(37.45, -122.2))
-                .add(new LatLng(37.35, -122.2))
-                .add(new LatLng(37.35, -122.0));
+                .color(Color.GREEN)
+                .add(new LatLng(50.755825, 30.617298))
+                .add(new LatLng(55.755825, 40.617298))
+                .add(new LatLng(60.755825, 40.617298));
 
         Polyline polyline = mMap.addPolyline(polylineOptions);
     }
